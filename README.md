@@ -5,6 +5,8 @@ All the scripts should be execuated under the root path(where you clone the repo
 ```
 data/
 │
+├── test/               # directory to put images you want to detect
+│
 ├── yolov11/
 │   ├── images/         # Contains training and validation datasets
 │   │   ├── train/      # Training images

@@ -14,7 +14,7 @@ info_indexed = pd.read_csv('data/info_indexed.csv').set_index('file_name')
 info_indexed['bbox'] = info_indexed['bbox'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
 # Prepare validation image paths
-folder_path = "data/yolov11/images/val/"
+folder_path = "data/test/"
 all_images = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith(('.jpg', '.png'))]
 
 # Process each image
