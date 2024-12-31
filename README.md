@@ -1,7 +1,7 @@
 # Probe_detection
 ## Project Overview
 This project focuses on probe detection using the YOLO model, including data preprocessing, model inference, and performance evaluation.
-All the scripts should be execuated under the root path
+All the scripts should be execuated under the root path(where you clone the repository)
 ```
 data/
 │
@@ -18,7 +18,8 @@ data/
 │       ├── best.onnx   # Best-performing model weights (ONNX format， derived from best.pt to speed up inference)
 │       ├── best.pt     # best model trained
 │       └── last.pt     # last model trained
-│   ├── result.csv      # train box loss, val box loss, precision and other infomation of every epoch
+│   ├── result.csv      # training box loss, val box loss, precision and other infomation of every epoch
+│   └── args.yaml       # training configuration derived by YOLO automatically
 │
 ├── src/          # Python scripts for project tasks
 │   ├── prepocessing.py # Script for convert json into dataset used for YOLO
