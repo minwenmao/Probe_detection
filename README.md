@@ -14,7 +14,7 @@ data/
 │
 ├── output_colab/     # Output from model training
 │   ├── weights/
-│       └── best.onnx # Best-performing model weights (ONNX format)
+│       ├── best.onnx # Best-performing model weights (ONNX format， derived from best.pt to speed up inference)
 │
 ├── scripts/          # Python scripts for project tasks
 │   ├── train.py      # Script for training the model
