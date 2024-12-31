@@ -28,8 +28,6 @@ for i in all_images:
     box_true = xywh2xyxy(gt)
     x1, y1, x2, y2 = map(int, box_true[:4])
     cv2.rectangle(cv_img, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Draw ground truth bbox
-
-
     if boxes.xyxy.size(0) == 0:  # Handle no detections
         cv2.putText(cv_img, "No detections found", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
         with open('iou.csv', 'a') as f:
@@ -45,6 +43,8 @@ for i in all_images:
     #     cv2.putText(cv_img, "No detections found", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     #     # Other notification
     ###### Uncomment above if no ground truth
+            
+
     cv2.namedWindow("output", cv2.WINDOW_NORMAL)  # Display the image
     cv2.imshow('output', cv_img)
     cv2.waitKey(0)
