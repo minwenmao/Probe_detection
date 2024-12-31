@@ -22,10 +22,13 @@ for i in all_images:
     result = onnx_model(i)[0]  # Inference on the image
     boxes = result.boxes
     cv_img = draw_detections(result.orig_img, boxes, boxes.conf)  # Draw detections on image
+
+    ##### Comment below if no ground truth
     gt = info_indexed.loc[i.split('/')[-1]]['bbox']  # Ground truth bbox
     box_true = xywh2xyxy(gt)
     x1, y1, x2, y2 = map(int, box_true[:4])
     cv2.rectangle(cv_img, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Draw ground truth bbox
+
 
     if boxes.xyxy.size(0) == 0:  # Handle no detections
         cv2.putText(cv_img, "No detections found", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
@@ -35,7 +38,13 @@ for i in all_images:
         iou = compute_iou(box_true, boxes.xyxy)[0]  # Calculate IoU
         with open('iou.csv', 'a') as f:
             f.write(f"{i.split('/')[-1]},{iou.item()}\n")
+    ##### Comment above if no ground truth
 
+    ##### Uncomment below if no ground truth
+    # if boxes.xyxy.size(0) == 0:  # Handle no detections
+    #     cv2.putText(cv_img, "No detections found", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+    #     # Other notification
+    ###### Uncomment above if no ground truth
     cv2.namedWindow("output", cv2.WINDOW_NORMAL)  # Display the image
     cv2.imshow('output', cv_img)
     cv2.waitKey(0)
