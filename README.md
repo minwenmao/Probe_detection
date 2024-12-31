@@ -1,7 +1,7 @@
 # Probe_detection
 ## Project Overview
 This project focuses on probe detection using the YOLO model, including data preprocessing, model inference, and performance evaluation.
-All the script should be runed under the root path
+All the scripts should be execuated under the root path
 ```
 data/
 │
